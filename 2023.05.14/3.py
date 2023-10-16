@@ -19,10 +19,7 @@ def numbers_strip(sample: list[float], n: int = 1, *, copy: bool = False) -> lis
 
 
 
-sample = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
-numbers_strip(sample, 1)
-sample is sample_stripped
-# [0.3, 0.4]
+
 
 # sample = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
 # numbers_strip(sample, 1)
