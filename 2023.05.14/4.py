@@ -7,5 +7,4 @@ def countable_nouns (num: int, words: tuple):
         return words [0]
     else:
         return words[1]
-
-
+    
