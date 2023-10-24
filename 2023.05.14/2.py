@@ -1,21 +1,18 @@
-def taxi_cost(distance: int, waiting_time: int = 0) -> int | None:
-    if distance < 0 or waiting_time < 0:
+def taxi_cost(length: int, wait: int = 0) -> int | None:
+    if length <= 0 or wait <= 0:
         return None
-        
+    
     base_cost = 80
-    addictional_distance_cost = (distance // 150) * 6
-    distance_remainder = distance % 150 
-    if distance_remainder > 0:
-        addictional_distance_cost += 6
-        
-    
-    waiting_time_cost = waiting_time * 3
-    
-    total_cost = base_cost + addictional_distance_cost + waiting_time_cost
-    
-    if distance == 0:
-        total_cost += base_cost + waiting_time_cost
-        
-    return round(total_cost)
-    
-    
+    cost_per_meter = 6
+
+    total_cost = base_cost + (length * cost_per_meter)
+    total_cost += wait * 3
+    total_cost += round(cost_per_meter) * wait
+
+    if length <= 0:
+        total_cost += 80
+    if wait <= 0:
+        total_cost += 0
+
+    return total_cost
+

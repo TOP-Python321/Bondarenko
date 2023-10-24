@@ -1,46 +1,29 @@
-def strong_password(password: str) -> bool:
-    if len(password) < 8:
+def strong_password(password):
+    length = len(password)
+    if length < 8:
         return False
-        
-        
-    has_lower = False
-    has_upper = False
-    has_digit = False
-    
-    for char in password:
-        if char.islower():
-            has_lower = True
-            
-        elif char.isupper():
-            has_upper = True
-        
-        elif char.isdigit():
-            has_digit = True
-           
-    if not (has_lower and has_upper and has_digit):
+    elif length > 8:
+        has_upper = False
+        has_lower = False
+        has_digit = False
+        has_special = False
+        for char in password:
+            if char.isalpha():
+                if char.isupper():
+                    has_upper = True
+                elif char.islower():
+                    has_lower = True
+            elif char.isdigit():
+                has_digit = True
+            elif not char.isalnum():
+                has_special = True
+        if has_upper and has_lower and has_digit and has_special:
+            return True
+    else:
         return False
-        
-    
-    has_other = False 
-    for char in password:
-        if not char.isalnum():
-            has_other = True
-            break
-            
-    if not has_other:
-        return False
-        
-    result = True
-    
-    return result
-    
 
-
-print(strong_password(input("")))
-
-
-# aP3:kD_l3
+# >>> strong_password('aP3:kD_l3')
 # True
-
-# password
+# >>> strong_password('password')
 # False
+
